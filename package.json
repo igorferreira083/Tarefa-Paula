@@ -1,0 +1,23 @@
+{
+  "name": "tarefa-paula",
+  "version": "1.0.0",
+  "description": "Atividade Paula 14/08",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorferreira083/Tarefa-Paula.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorferreira083/Tarefa-Paula/issues"
+  },
+  "homepage": "https://github.com/igorferreira083/Tarefa-Paula#readme",
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
+}
