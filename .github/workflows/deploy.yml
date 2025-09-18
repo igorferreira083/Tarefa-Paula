@@ -1,4 +1,3 @@
-
 name: Deploy to Vercel
 
 on:
@@ -10,11 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install Vercel CLI
-      run: npm i -g vercel
+      - name: Install Vercel CLI
+        run: npm i -g vercel
 
-    - name: Deploy to Vercel
-  run: vercel --token ${{ secrets.ThMRLYo6kqxr4ZotarlgqEug }} --org ${{ secrets.Giyt1QPpZm3PwQPKEYIqddjV }} --project ${{ secrets.prj_qvHa9Zx0ChkUaGjahZN8V3354vMZ }}
-
+      - name: Deploy to Vercel
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --org ${{ secrets.VERCEL_ORG_ID }} --project ${{ secrets.VERCEL_PROJECT_ID }}
