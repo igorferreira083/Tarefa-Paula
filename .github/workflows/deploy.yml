@@ -12,8 +12,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Vercel CLI
+      - name: Instalar Vercel CLI
         run: npm install -g vercel
 
-      - name: Deploy to Vercel
+      - name: Verificar se os secrets estão definidos
+        run: |
+          echo "Verificando secrets..."
+
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "❌ VERCEL_TOKEN está vazio ou não foi definido!"
+            exit 1
+          else
+            echo "✅ VERCEL_TOKEN está OK"
+          fi
+
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
+            echo "❌ VERCEL_PROJECT_ID está vazio ou não foi definido!"
+            exit 1
+          else
+            echo "✅ VERCEL_PROJECT_ID está OK"
+          fi
+
+          if [ -z "${{ secrets.VERCEL_ORG_ID }}" ]; then
+            echo "❌ VERCEL_ORG_ID está vazio ou não foi definido!"
+            exit 1
+          else
+            echo "✅ VERCEL_ORG_ID está OK"
+          fi
+
+      - name: Fazer deploy na Vercel
         run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
