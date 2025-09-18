@@ -15,28 +15,14 @@ jobs:
       - name: Instalar Vercel CLI
         run: npm install -g vercel
 
-      - name: Verificar se os secrets estão definidos
+      - name: Verificar se o secret VERCEL_TOKEN está definido
         run: |
-          echo "Verificando secrets..."
-
           if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
             echo "❌ VERCEL_TOKEN está vazio ou não foi definido!"
             exit 1
           else
             echo "✅ VERCEL_TOKEN está OK"
           fi
-
-          if [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
-            echo "❌ VERCEL_PROJECT_ID está vazio ou não foi definido!"
-            exit 1
-          else
-            echo "✅ VERCEL_PROJECT_ID está OK"
-          fi
-
-      - name: Gerar vercel.json dinamicamente
-        run: |
-          echo '{ "projectId": "'"${{ secrets.VERCEL_PROJECT_ID }}"'" }' > vercel.json
-          cat vercel.json
 
       - name: Fazer deploy na Vercel
         run: vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
