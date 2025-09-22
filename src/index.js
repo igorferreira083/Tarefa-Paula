@@ -1,8 +1,6 @@
 const soma = require('./soma');
 
-function handlerSimples() {
+module.exports = (req, res) => {
   const resultado = soma(2, 3);
-  return `API funcionando! Resultado da soma: ${resultado}`;
-}
-
-console.log(handlerSimples()); // só para ver o resultado
+  res.status(200).send(`API funcionando! Resultado da soma: ${resultado}`);
+};
