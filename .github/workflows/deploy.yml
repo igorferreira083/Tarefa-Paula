@@ -24,9 +24,7 @@ jobs:
             echo "✅ Todos os secrets necessários estão definidos!"
           fi
 
-      - name: Fazer deploy na Vercel
-  run: vercel --cwd . --prod --yes \
-              --token ${{ secrets.VERCEL_TOKEN }} \
-              --scope ${{ secrets.VERCEL_ORG_ID }} \
-              --project ${{ secrets.VERCEL_PROJECT_ID }}
+     - name: Fazer deploy na Vercel
+  run: vercel --cwd . --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }} --project ${{ secrets.VERCEL_PROJECT_ID }}
+
 
