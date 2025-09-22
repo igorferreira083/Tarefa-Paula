@@ -3,7 +3,7 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   deploy:
@@ -19,16 +19,15 @@ jobs:
       - name: Verificar se os secrets estão definidos
         run: |
           if [ -z "${{ secrets.VERCEL_TOKEN }}" ] || [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ] || [ -z "${{ secrets.VERCEL_ORG_ID }}" ]; then
-            echo "❌ Um ou mais secrets (VERCEL_TOKEN, VERCEL_PROJECT_ID, VERCEL_ORG_ID) não estão definidos!"
+            echo "❌ Um ou mais secrets estão ausentes!"
             exit 1
           else
-            echo "✅ Todos os secrets necessários estão definidos!"
+            echo "✅ Todos os secrets estão definidos!"
           fi
 
-     - name: Fazer deploy na Vercel
-  env:
-    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-    VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  run: vercel --cwd . --prod --yes
-
+      - name: Fazer deploy na Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: vercel --cwd . --prod --yes
