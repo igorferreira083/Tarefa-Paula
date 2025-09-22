@@ -1,4 +1,4 @@
-const soma = require('../src/index');
+const soma = require('../src/soma');
 
 test('2 + 3 deve ser 5', () => {
   expect(soma(2, 3)).toBe(5);
